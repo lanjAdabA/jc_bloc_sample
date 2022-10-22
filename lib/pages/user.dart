@@ -3,14 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jc_bloc/logic/cubit/cubit/user_cubit.dart';
 import 'package:jc_bloc/model/user.model.dart';
 
-class UserList extends StatefulWidget {
-  const UserList({Key? key}) : super(key: key);
+class UserListPage extends StatefulWidget {
+  const UserListPage({Key? key}) : super(key: key);
 
   @override
-  State<UserList> createState() => _UserListState();
+  State<UserListPage> createState() => _UserListState();
 }
 
-class _UserListState extends State<UserList> {
+class _UserListState extends State<UserListPage> {
   @override
   void initState() {
     context.read<UserCubit>().getData();
@@ -45,6 +45,9 @@ class _UserListState extends State<UserList> {
           itemCount: data.length,
           itemBuilder: ((context, index) {
             return ListTile(
+              horizontalTitleGap: 4,
+              contentPadding: const EdgeInsets.all(16),
+              tileColor: Colors.purple[200],
               title: Text(data[index].name),
               subtitle: Text(data[index].email),
             );
